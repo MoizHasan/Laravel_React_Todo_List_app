@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Item from './Item'; 
 import AddItem from './AddItem';
 import UpdateItem from './UpdateItem';
+import Search from './Search'; 
 
 
 class Main extends Component {
@@ -14,9 +15,8 @@ class Main extends Component {
         //initialize state
         this.state = {
             items: [],
-            searchString : "", 
+            filteredItems: [],  
             currentItem: null,
-            editClass: "none",
         }
 
         this.handleAddItem = this.handleAddItem.bind(this); 
@@ -24,6 +24,7 @@ class Main extends Component {
         this.handleEdit = this.handleEdit.bind(this);  
         this.handleDelete = this.handleDelete.bind(this);
         this.handleComplete = this.handleComplete.bind(this); 
+        this.handleChange = this.handleChange.bind(this); 
     }
 
     componentDidMount() {
@@ -31,7 +32,7 @@ class Main extends Component {
         axios.get('api/items?api_token=' + token)
         .then(res => {
             const items = res.data;
-            this.setState({ items });
+            this.setState({ items : items, filteredItems : items });
         });
     }
 
@@ -55,6 +56,7 @@ class Main extends Component {
        //update the state
        this.setState((prevState)=> ({
            items: prevState.items.concat(data),
+           filteredItems: prevState.items.concat(data),
            currentItem: null
        }))
    })
@@ -70,7 +72,9 @@ class Main extends Component {
             return x !== item
         });
             
-            this.setState({items: array});
+            this.setState({items: array, 
+                            filteredItems: array
+                            });
         });
     }
 
@@ -95,6 +99,7 @@ class Main extends Component {
             })
             this.setState((prevState)=> ({
                 items: array.concat(item),
+                filteredItems: array.concat(item), 
                 currentItem: null
             }))
         }) 
@@ -103,8 +108,7 @@ class Main extends Component {
     //pass data from a clicked item component back to main so it can be used in handleUpdate ~grimaces~
     handleEdit(item) {
         this.setState({
-            currentItem: item, 
-            editClass: "show"
+            currentItem: item
         }); 
     }
 
@@ -120,21 +124,21 @@ class Main extends Component {
             }
         }
         this.setState((prevState)=> ({
-            items: array
+            items: array, 
         }))
     }
- 
 
-    handleClick(item) {
-        //update state
-        this.setState({currentItem:item}); 
+    handleChange(filteredItems) {
+        this.setState({filteredItems : filteredItems}); 
     }
+ 
 
     render() {
         return (
             <div>
                 <div>
-                {this.state.items.map(item => (
+                <Search items={this.state.items} handleChange={this.handleChange} />
+                {this.state.filteredItems.map(item => (
                 <div key={item.id} >
                     < Item item={item} handleEdit={this.handleEdit} handleComplete={this.handleComplete} handleDelete={this.handleDelete} />
                 </div>

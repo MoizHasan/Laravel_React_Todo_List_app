@@ -37,8 +37,8 @@ class AddItem extends Component {
  
   render() {
     return(
-      <div> 
-        <h2> Add new Task </h2>
+      <div className="update-box"> 
+        <h2> Add New Task </h2>
         <div> 
         {/*when Submit button is pressed, the control is passed to 
          *handleSubmit method 
@@ -46,11 +46,11 @@ class AddItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <label> Title: 
            { /*On every keystroke, the handeInput method is invoked */ }
-            <input type="text" onChange={(e)=>this.handleInput('title',e)} />
+            <input className="update-input" type="text" onChange={(e)=>this.handleInput('title',e)} />
           </label>
            
           <label> Description: 
-            <input type="text" onChange={(e)=>this.handleInput('description',e)} />
+            <input className="update-input" type="text" onChange={(e)=>this.handleInput('description',e)} />
           </label>
            
           <input type="submit" value="Submit" />

@@ -61467,14 +61467,18 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Add new Task "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "update-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Add New Task "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " Title:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "update-input",
         type: "text",
         onChange: function onChange(e) {
           return _this2.handleInput('title', e);
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " Description:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "update-input",
         type: "text",
         onChange: function onChange(e) {
           return _this2.handleInput('description', e);
@@ -62013,18 +62017,22 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Edit Task "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "update-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Edit Task "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "details"
       }, this.props.currentItem.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "details"
       }, this.props.currentItem.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " Title:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "update-input",
         type: "text",
         onChange: function onChange(e) {
           return _this2.handleInput('title', e);
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " Description:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "update-input",
         type: "text",
         onChange: function onChange(e) {
           return _this2.handleInput('description', e);

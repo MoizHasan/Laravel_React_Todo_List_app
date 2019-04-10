@@ -10,7 +10,15 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script>
+    document.querySelector('.navbar-toggler').onclick = function() {
+        if (document.querySelector('navbar-collapse').classList.contains('show')) {
+            document.querySelector('navbar-collapse').classList.remove('show'); 
+        } else {
+            document.querySelector('navbar-collapse').classList.add('show'); 
+        }
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -50,14 +58,8 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                <div style="display:block;text-align:right;" class="dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}">
                                         {{ __('Logout') }}
                                     </a>
 

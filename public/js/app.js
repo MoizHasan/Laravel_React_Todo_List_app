@@ -61281,6 +61281,17 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/images/delete.png":
+/*!*************************************!*\
+  !*** ./resources/images/delete.png ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/delete.png?0c0ebd3859f87515669ee790164881ab";
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -61493,6 +61504,8 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _images_delete_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../images/delete.png */ "./resources/images/delete.png");
+/* harmony import */ var _images_delete_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_images_delete_png__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61510,6 +61523,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -61554,14 +61568,24 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "todo-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.item.title, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.item.description, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "title"
+      }, " ", this.props.item.title, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "description"
+      }, " ", this.props.item.description, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "edit",
         onClick: this.handleEditPress
-      }, " Edit "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleDeletePress
-      }, " Delete "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, " Edit "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.handleCompletePress,
         className: "complete completed-" + this.props.item.completed
-      }));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "delete",
+        onClick: this.handleDeletePress
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _images_delete_png__WEBPACK_IMPORTED_MODULE_1___default.a
+      }))));
     }
   }]);
 
@@ -61681,6 +61705,7 @@ function (_Component) {
         _this3.setState(function (prevState) {
           return {
             items: prevState.items.concat(data),
+            filteredItems: prevState.items.concat(data),
             currentItem: null
           };
         });
@@ -61699,7 +61724,8 @@ function (_Component) {
         });
 
         _this4.setState({
-          items: array
+          items: array,
+          filteredItems: array
         });
       });
     }
@@ -61728,6 +61754,7 @@ function (_Component) {
         _this5.setState(function (prevState) {
           return {
             items: array.concat(item),
+            filteredItems: array.concat(item),
             currentItem: null
           };
         });
@@ -61738,8 +61765,7 @@ function (_Component) {
     key: "handleEdit",
     value: function handleEdit(item) {
       this.setState({
-        currentItem: item,
-        editClass: "show"
+        currentItem: item
       });
     }
   }, {

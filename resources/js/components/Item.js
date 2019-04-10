@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import delIcon from '../../images/delete.png';
 
 class Item extends Component {
 
@@ -31,11 +32,13 @@ class Item extends Component {
       render() {
           return(  
             <div className="todo-item"> 
-            <p> {this.props.item.title} </p>
-            <p> {this.props.item.description} </p>
-            <button onClick={this.handleEditPress} > Edit </button>
-            <button onClick={this.handleDeletePress}> Delete </button>
+            <h2 className="title"> {this.props.item.title} </h2>
+            <p className="description"> {this.props.item.description} </p>
+            <nav className="buttons">
+            <button className="edit" onClick={this.handleEditPress} > Edit </button>
             <div onClick={this.handleCompletePress} className={"complete completed-"+this.props.item.completed}></div>
+            <button className="delete" onClick={this.handleDeletePress}><img src = {delIcon} /></button>
+            </nav> 
             </div>
             )
       }
